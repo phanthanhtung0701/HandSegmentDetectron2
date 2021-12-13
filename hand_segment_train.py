@@ -23,7 +23,9 @@ import datasets.my_dataset as my_data_FHAB
 
 from detectron2.data import DatasetCatalog, MetadataCatalog
 for d in ["train", "test"]:
-    DatasetCatalog.register("my_hand_dataset_" + d, lambda d=d: my_data_DHY.get_hand_dicts('/mnt/disks/hs03/Data_Hand/data/' + d + '.json'))
+    DatasetCatalog.register("my_hand_dataset_" + d,
+                            lambda d=d: my_data_DHY.get_hand_dicts('/mnt/disks/hs03/Data_Hand/data/' + d + '.json',
+                                                                   '/mnt/disks/hs03/Data_Hand/data/Train_Set'))
     MetadataCatalog.get("my_hand_dataset_" + d).set(thing_classes=['right hand', 'left hand'])
 
 
